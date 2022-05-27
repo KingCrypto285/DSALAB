@@ -1,0 +1,33 @@
+ public  static <E> void Checkit(Vertex<E> Vertice, Set<Vertex<E>> Visited)
+    {
+        //System.out.println("All connected ones" + V.adjacentVertices());
+        //Iterator<Vertex<E>> iterator = Vertice.adjacentVertices().iterator();
+        Visited.add(Vertice);
+        //System.out.println("Already Vertex " + V);
+        
+        //Vertex<E> AdjVertex = Vertice;
+        Set<Vertex<E>> Neighbours = Vertice.adjacentVertices();
+        for(Vertex<E> Vert: Neighbours)
+        {
+            
+            if(!Visited.contains(Vert))
+            {
+                Checkit(Vert, Visited);
+            }
+           
+        
+        }
+        
+        
+        
+    
+        
+    }
+   
+    public static <E> Set recurdepth(GraphADT<E> graph, Vertex<E> startVertex)
+    {
+        Set<Vertex<E>> FinalSet = new HashSet<>();
+        Checkit( startVertex, FinalSet);
+        //System.out.println("This is the final set: "+FinalSet.toString());
+        return FinalSet;
+    }
